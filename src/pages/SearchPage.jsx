@@ -1,46 +1,43 @@
-import React, { useEffect, useState } from 'react'
-import Header from '../Components/Header'
-import { useLocation } from 'react-router-dom';
-import { searchMovies,  } from "../services/movieService"
-import MovieCard from '../Components/MovieCard';
-
+import React, { useEffect, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import Header from "../Components/Header"
+import { useLocation } from "react-router-dom"
+import { fetchSearchMovies } from "../store/moviesSlice"
+import MovieCard from "../Components/MovieCard"
 
 const SearchPage = () => {
-    const [searchResults, setSearchResults] = useState([]);
-    const location = useLocation();
-    const [currentPage, setCurrentPage] = useState(2)
-    const [totalPages, setTotalPages] = useState(1)
+  const dispatch = useDispatch()
+  const searchResults = useSelector((state) => state.movies.searchResults)
+  const status = useSelector((state) => state.movies.status)
+  const error = useSelector((state) => state.movies.error)
+  const location = useLocation()
+  const totalPages = useSelector((state) => state.movies.totalPages)
+  const [currentPage, setCurrentPage] = useState(1)
 
-    useEffect(() => {
-        const query = new URLSearchParams(location.search).get('query');
-        if (query) {
-          const fetchSearchResults = async () => {
-            try {
-              const data = await searchMovies(query,currentPage);
-              setSearchResults(data.results);
-              window.scrollTo({ top: 0, behavior: "smooth" })
-              setTotalPages(data?.total_pages)
-            } catch (error) {
-              console.error('Error fetching search results:', error);
-            }
-          };
-    
-          fetchSearchResults();
-        }
-      }, [location.search,currentPage]);
+  useEffect(() => {
+    const query = new URLSearchParams(location.search).get("query")
+    if (query) {
+      dispatch(fetchSearchMovies({ query, currentPage }))
+    }
+  }, [dispatch, location.search, currentPage])
 
-      const handlePageChange = (page) => {
-        setCurrentPage(page)
-      }
+  const handlePageChange = (page) => {
+    setCurrentPage(page)
+  }
+
   return (
     <>
-    <Header/>
-    <MovieCard
-        movies={searchResults}
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={handlePageChange}
-      />
+      <Header />
+      {status === "loading" && <p>Loading...</p>}
+      {status === "failed" && <p>{error}</p>}
+      {status === "succeeded" && (
+        <MovieCard
+          movies={searchResults}
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
+        />
+      )}
     </>
   )
 }

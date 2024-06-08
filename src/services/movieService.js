@@ -1,8 +1,6 @@
-// movieService.js
-const API_KEY = 'c45a857c193f6302f2b5061c3b85e743'; // Replace with your actual API key
+const API_KEY = 'c45a857c193f6302f2b5061c3b85e743';
 const BASE_URL = 'https://api.themoviedb.org/3';
 
-// Function to fetch popular movies
 export const getPopularMovies = async (currentPage) => {
   try {
     const response = await fetch(`${BASE_URL}/movie/popular?api_key=${API_KEY}&language=en-US&page=${currentPage}`);
@@ -17,7 +15,6 @@ export const getPopularMovies = async (currentPage) => {
   }
 };
 
-// Function to fetch top rated movies
 export const getTopRatedMovies = async (currentPage) => {
   try {
     const response = await fetch(`${BASE_URL}/movie/top_rated?api_key=${API_KEY}&language=en-US&page=${currentPage}`);
@@ -32,7 +29,6 @@ export const getTopRatedMovies = async (currentPage) => {
   }
 };
 
-// Function to fetch upcoming movies
 export const getUpcomingMovies = async () => {
   try {
     const response = await fetch(`${BASE_URL}/movie/upcoming?api_key=${API_KEY}`);
@@ -47,7 +43,6 @@ export const getUpcomingMovies = async () => {
   }
 };
 
-// Function to fetch movie by ID
 export const getMovieById = async (id) => {
   try {
     const response = await fetch(`${BASE_URL}/movie/${id}?api_key=${API_KEY}`);
@@ -75,7 +70,6 @@ export const getCast = async (id) => {
   }
 };
 
-// Function to search movies
 export const searchMovies = async (query,currentPage) => {
   try {
     const response = await fetch(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}&page=${currentPage}`);

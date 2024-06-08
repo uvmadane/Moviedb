@@ -1,37 +1,45 @@
-import React, { useEffect, useState } from "react"
-import Header from "../Components/Header"
-import { getPopularMovies } from "../services/movieService"
-import MovieCard from "../Components/MovieCard"
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import Header from "../Components/Header";
+import MovieCard from "../Components/MovieCard";
+import { fetchPopularMovies } from "../store/moviesSlice";
 
 const HomePage = () => {
-  const [movies, setMovies] = useState([])
-  const [currentPage, setCurrentPage] = useState(1)
-  const [totalPages, setTotalPages] = useState(1)
+  const dispatch = useDispatch();
+  const movies = useSelector((state) => state.movies.popular);
+  const status = useSelector((state) => state.movies.status);
+  const error = useSelector((state) => state.movies.error);
+  const currentPage = useSelector((state) => state.movies.currentPage);
+  const totalPages = useSelector((state) => state.movies.totalPages);
+
   useEffect(() => {
-    const fetchMovies = async () => {
-      const data = await getPopularMovies(currentPage)
-      setMovies(data?.results)
-      window.scrollTo({ top: 0, behavior: "smooth" })
-      setTotalPages(data?.total_pages)
-    }
-    fetchMovies()
-  }, [currentPage])
+    dispatch(fetchPopularMovies(currentPage));
+  }, [dispatch, currentPage]);
+
+  useEffect(() => {
+    dispatch({ type: 'movies/setCurrentPage', payload: 1 });
+  }, [dispatch]);
 
   const handlePageChange = (page) => {
-    setCurrentPage(page)
-  }
+    dispatch({ type: 'movies/setCurrentPage', payload: page });
+    dispatch(fetchPopularMovies(page));
+  };
 
   return (
     <div>
       <Header />
-      <MovieCard
-        movies={movies}
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={handlePageChange}
-      />
+      {status === 'loading' && <p>Loading...</p>}
+      {status === 'failed' && <p>{error}</p>}
+      {status === 'succeeded' && (
+        <MovieCard
+          movies={movies}
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
+        />
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;

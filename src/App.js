@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { Routes, Route } from "react-router-dom"
 import HomePage from "./pages/HomePage"
 import TopRatedPage from "./pages/TopRatedPage"
 import UpcomingPage from "./pages/UpcomingPage"
@@ -8,15 +8,13 @@ import SearchPage from "./pages/SearchPage"
 function App() {
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/toprated" element={<TopRatedPage />} />
-          <Route path="/upcoming" element={<UpcomingPage />} />
-          <Route path="/movieDetails/:id" element={<MovieDetailPage />} />
-          <Route path="/search" element={<SearchPage />} />
-        </Routes>
-      </BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/toprated" element={<TopRatedPage />} />
+        <Route path="/upcoming" element={<UpcomingPage />} />
+        <Route path="/movieDetails/:id" element={<MovieDetailPage />} />
+        <Route path="/search" element={<SearchPage />} />
+      </Routes>
     </>
   )
 }
