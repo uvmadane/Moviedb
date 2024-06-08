@@ -3,9 +3,9 @@ const API_KEY = 'c45a857c193f6302f2b5061c3b85e743'; // Replace with your actual 
 const BASE_URL = 'https://api.themoviedb.org/3';
 
 // Function to fetch popular movies
-export const getPopularMovies = async () => {
+export const getPopularMovies = async (currentPage) => {
   try {
-    const response = await fetch(`${BASE_URL}/movie/popular?api_key=${API_KEY}&language=en-US&page=1`);
+    const response = await fetch(`${BASE_URL}/movie/popular?api_key=${API_KEY}&language=en-US&page=${currentPage}`);
     if (!response.ok) {
       throw new Error('Failed to fetch popular movies');
     }
@@ -18,9 +18,9 @@ export const getPopularMovies = async () => {
 };
 
 // Function to fetch top rated movies
-export const getTopRatedMovies = async () => {
+export const getTopRatedMovies = async (currentPage) => {
   try {
-    const response = await fetch(`${BASE_URL}/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`);
+    const response = await fetch(`${BASE_URL}/movie/top_rated?api_key=${API_KEY}&language=en-US&page=${currentPage}`);
     if (!response.ok) {
       throw new Error('Failed to fetch top rated movies');
     }
@@ -76,9 +76,9 @@ export const getCast = async (id) => {
 };
 
 // Function to search movies
-export const searchMovies = async (query) => {
+export const searchMovies = async (query,currentPage) => {
   try {
-    const response = await fetch(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}`);
+    const response = await fetch(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}&page=${currentPage}`);
     if (!response.ok) {
       throw new Error('Failed to search movies');
     }

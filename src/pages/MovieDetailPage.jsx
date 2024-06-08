@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import "./id.css"
+import "../styles/movieDetails.css"
 import Header from "../Components/Header"
 import { getMovieById, getCast } from "../services/movieService"
 import { BASE_URL } from "../config"
@@ -24,14 +24,14 @@ const MovieDetailPage = () => {
     }
 
     fetchMovieData()
-  }, [])
+  }, [id])
 
   const renderMovieDetails = (movie, cast) => (
     <div className="topmain">
 
     <div className="movie-card1">
       <div className="movie-details">
-        <div className="movie-card1">
+        <div className="movie-card1 smallimg">
           <img
             src={`${BASE_URL}${movie.poster_path}`}
             alt={movie.title}
