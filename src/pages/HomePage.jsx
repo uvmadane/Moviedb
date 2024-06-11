@@ -22,7 +22,7 @@ const HomePage = () => {
 
   const handlePageChange = (page) => {
     dispatch({ type: 'movies/setCurrentPage', payload: page });
-    dispatch(fetchPopularMovies(page));
+    // dispatch(fetchPopularMovies(page));
   };
 
   return (
