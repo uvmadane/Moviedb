@@ -4,10 +4,12 @@ import TopRatedPage from "./pages/TopRatedPage"
 import UpcomingPage from "./pages/UpcomingPage"
 import MovieDetailPage from "./pages/MovieDetailPage"
 import SearchPage from "./pages/SearchPage"
+import Header from "./Components/Header"
 
 function App() {
   return (
     <>
+    <Header/>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/toprated" element={<TopRatedPage />} />
