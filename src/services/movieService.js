@@ -29,9 +29,9 @@ export const getTopRatedMovies = async (currentPage) => {
   }
 };
 
-export const getUpcomingMovies = async () => {
+export const getUpcomingMovies = async (currentPage) => {
   try {
-    const response = await fetch(`${BASE_URL}/movie/upcoming?api_key=${API_KEY}`);
+    const response = await fetch(`${BASE_URL}/movie/upcoming?api_key=${API_KEY}&language=en-US&page=${currentPage}`);
     if (!response.ok) {
       throw new Error('Failed to fetch upcoming movies');
     }

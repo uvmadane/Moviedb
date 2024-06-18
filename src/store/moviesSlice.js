@@ -11,8 +11,8 @@ export const fetchTopRatedMovies = createAsyncThunk('movies/fetchTopRatedMovies'
   return response;
 });
 
-export const fetchUpcomingMovies = createAsyncThunk('movies/fetchUpcomingMovies', async () => {
-  const response = await getUpcomingMovies();
+export const fetchUpcomingMovies = createAsyncThunk('movies/fetchUpcomingMovies', async (currentPage) => {
+  const response = await getUpcomingMovies(currentPage);
   return response;
 });
 
