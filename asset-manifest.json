@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "https://uvmadane.github.io/Moviedb/static/css/main.7f22433f.css",
-    "main.js": "https://uvmadane.github.io/Moviedb/static/js/main.d2ce9805.js",
+    "main.css": "https://uvmadane.github.io/Moviedb/static/css/main.a6c383fe.css",
+    "main.js": "https://uvmadane.github.io/Moviedb/static/js/main.06b59dbe.js",
     "static/js/453.0aedba20.chunk.js": "https://uvmadane.github.io/Moviedb/static/js/453.0aedba20.chunk.js",
     "index.html": "https://uvmadane.github.io/Moviedb/index.html",
-    "main.7f22433f.css.map": "https://uvmadane.github.io/Moviedb/static/css/main.7f22433f.css.map",
-    "main.d2ce9805.js.map": "https://uvmadane.github.io/Moviedb/static/js/main.d2ce9805.js.map",
+    "main.a6c383fe.css.map": "https://uvmadane.github.io/Moviedb/static/css/main.a6c383fe.css.map",
+    "main.06b59dbe.js.map": "https://uvmadane.github.io/Moviedb/static/js/main.06b59dbe.js.map",
     "453.0aedba20.chunk.js.map": "https://uvmadane.github.io/Moviedb/static/js/453.0aedba20.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7f22433f.css",
-    "static/js/main.d2ce9805.js"
+    "static/css/main.a6c383fe.css",
+    "static/js/main.06b59dbe.js"
   ]
 }
