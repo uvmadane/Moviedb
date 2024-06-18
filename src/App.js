@@ -16,7 +16,7 @@ function App() {
         <Route path="/upcoming" element={<UpcomingPage />} />
         <Route path="/movieDetails/:id" element={<MovieDetailPage />} />
         <Route path="/search" element={<SearchPage />} />
-        <Route path="*" element={<NotFoundPage />} />
+        <Route path="*" element={<HomePage />} />
       </Routes>
     </>
   )
