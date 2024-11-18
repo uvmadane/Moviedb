@@ -31,6 +31,7 @@ const HomePage = () => {
       {status === 'loading' && <p>Loading...</p>}
       {status === 'failed' && <p>{error}</p>}
       {status === 'succeeded' && (
+        
         <MovieCard
           movies={movies}
           currentPage={currentPage}
