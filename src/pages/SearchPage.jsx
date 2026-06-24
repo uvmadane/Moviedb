@@ -28,8 +28,18 @@ const SearchPage = () => {
   return (
     <>
       <Header />
-      {status === "loading" && <p>Loading...</p>}
-      {status === "failed" && <p>{error}</p>}
+      {status === "loading" && (
+        <div className="page-loading-container">
+          <div className="spinner"></div>
+          <p>Searching cinematic archives...</p>
+        </div>
+      )}
+      {status === "failed" && (
+        <div className="page-error-container">
+          <h2 className="error-title">Oops! Search failed</h2>
+          <p className="error-message">{error}</p>
+        </div>
+      )}
       {status === "succeeded" && (
         <MovieCard
           movies={searchResults}
